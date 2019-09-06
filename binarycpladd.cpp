@@ -6,7 +6,7 @@ struct node
 	int data;
 	node *next,*prev;
 };
-
+int flag_for_first_time=0;
 class dll
 {public:
 node *head1,*tail1;
@@ -59,9 +59,17 @@ while(i<n)
 	q=q->prev;
 	i++;
 }
-compl2.display();
-cout<<"\n\t";
+node *t=compl2.head1;
+i=0;
 
+while(i<n)
+{
+	cout<<t->data;
+	t=t->next;
+	i++;
+}
+cout<<"\n\t";
+flag_for_first_time=0;
 }
 
 void dll::cpl1(dll obj)
@@ -100,8 +108,10 @@ cout<<"\n\t";
 }
 
 void dll::create()
-{cout<<"\n\tenter the length of binary number: ";
-	cin>>n;
+{if(flag_for_first_time==0)
+    {cout<<"\n\tenter the length of binary number: ";
+	 cin>>n;
+    }
 	node *ptr;
 
 	head1=new node;
@@ -117,7 +127,7 @@ void dll::create()
 		q=q->next;
 		i++;
 	}tail1=p;
-
+    flag_for_first_time=1;
 }
 void dll::input()
 {node *ptr;
@@ -142,7 +152,7 @@ int main()
 {
 
 	dll obj1;
-	//obj1.takelen();
+
 	obj1.create();
 	obj1.input();
 	obj1.display();
